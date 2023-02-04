@@ -12,6 +12,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout code
@@ -34,11 +37,9 @@ jobs:
       with:
         files: hello
         tag_name: ${{ env.TAG_NAME }}
-        release_name: Release ${{ env.TAG_NAME }}
+        name: Release ${{ env.TAG_NAME }}
         draft: false
         prerelease: false
-      # permissions:
-      # contents: write
 
     # - name: Upload Release Asset
     #   id: upload-release-asset 
